@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+*::after,*::before{
+    box-sizing: border-box;
+}
+
+.pikachu{
+position: relative;
+}
+.nose{
+    border: 10px solid black;
+    width:0px;
+    height: 0px;
+    position: relative;
+    top: 145px;
+    left:50%;
+    margin-left: -10px;
+    border-color: black transparent  transparent;
+    border-bottom: none;
+}
+.yuan{
+    border:1px solid black ;
+    width: 20px;
+    height: 5px;
+    position: absolute;
+    margin-left: -10px;
+    top:-15px;
+    border-radius: 10px 10px 0 0;
+    background: black;
+
+}
+.eye{
+    width: 64px;
+    height: 64px;
+    /* border: 1px solid red; */
+    position: absolute;
+    left:50%;
+    margin-left:-32px;
+    top:100px;
+    border-radius: 50%;
+    background: #2e2e2e;
+}
+.eye::after{
+    content: "";
+    display: block;
+    width: 31px;
+    height: 31px;
+    border:1px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left:10px;
+    background: #fff;
+
+}
+.eye.left{
+    transform: translateX(-100px);
+  }
+  .eye.right{
+    transform: translateX(100px);
+  }
