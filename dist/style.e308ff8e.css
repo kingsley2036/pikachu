@@ -6,9 +6,14 @@
 *::after,*::before{
     box-sizing: border-box;
 }
-
+body{
+    background: #ffe600; 
+    height: 100vh; 
+}
 .pikachu{
 position: relative;
+
+
 }
 .nose{
     border: 10px solid black;
@@ -20,6 +25,7 @@ position: relative;
     margin-left: -10px;
     border-color: black transparent  transparent;
     border-bottom: none;
+    z-index: 1;
 }
 .yuan{
     border:1px solid black ;
@@ -62,5 +68,68 @@ position: relative;
   .eye.right{
     transform: translateX(100px);
   }
+  .mouth{
+     width: 150px;
+     height: 150px;
+     border: 1px solid red; 
+     position: relative;
+     left: 50%;
+     margin-left: -75px;
+     top:170px;
+  }
+  .mouth .up{
+    position: relative;
+    /* border: 1px solid red; */
+    top: -20px;
+  }
+  .mouth .up .lip.left{
+      border:2px solid black;
+      height: 30px;
+      width: 100px;
+      border-radius: 0 0 0 50px;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-left-color: transparent;
+      position: relative;
+      left: 50%;
+      margin-left: -50px;
+      transform: rotate(-15deg) translateX(-53px);
+  }
+  .mouth .up .lip.left::before{
+   
+    content: "";
+    display: block;
+    height: 30px;
+    width: 5px;
+    right: -3px;
+    background: #ffe600;
+    bottom: 0;   
+    position: absolute; 
+}
+.mouth .up .lip.right{
+    border:2px solid rgb(43, 21, 21);
+    height: 30px;
+    width: 100px;
+    border-radius: 0 0 50px 0;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
+    top:-29px;
+    transform: rotate(15deg) translateX(53px);
+}
+.mouth .up .lip.right::before{
+ 
+  content: "";
+  display: block;
+  height: 30px;
+  width: 5px;
+  left: -3px;
+  background:  #ffe600;
+  bottom: 0;   
+  position: absolute; 
+}
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */
