@@ -117,9 +117,77 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"main.js":[function(require,module,exports) {
+})({"css.js":[function(require,module,exports) {
+"use strict";
 
-},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var string = "\n<style>\n\n#html{\n background: #ffe600;\n \n}\n\n.pikachu {\n    position: relative;\n      \n}\n\n.nose {\n    border: 10px solid black;\n    width: 0px;\n    height: 0px;\n    position: relative;\n    top: 145px;\n    left: 50%;\n    margin-left: -10px;\n    border-color: black transparent transparent;\n    border-bottom: none;\n    z-index: 10;\n}\n@keyframes wave{\n    0%{\n        transform: rotate(0);\n    }\n    33%{\n        transform: rotate(15deg); \n    }\n    66%{\n        transform: rotate(-15deg); \n    }\n    100%{\n        transform: rotate(0); \n    }\n}\n.nose:hover{\nanimation: wave 300ms infinite linear;\ntransform-origin: center bottom;\n}\n\n.yuan {\n    border: 1px solid black;\n    width: 20px;\n    height: 5px;\n    position: absolute;\n    margin-left: -10px;\n    top: -15px;\n    border-radius: 10px 10px 0 0;\n    background: black;\n\n}\n\n.eye {\n    width: 64px;\n    height: 64px;\n    /* border: 1px solid red; */\n    position: absolute;\n    left: 50%;\n    margin-left: -32px;\n    top: 100px;\n    border-radius: 50%;\n    background: #2e2e2e;\n}\n\n.eye::after {\n    content: \"\";\n    display: block;\n    width: 31px;\n    height: 31px;\n    border: 1px solid #000;\n    border-radius: 50%;\n    position: absolute;\n    top: 4px;\n    left: 10px;\n    background: #fff;\n\n}\n\n.eye.left {\n    transform: translateX(-100px);\n}\n\n.eye.right {\n    transform: translateX(100px);\n}\n\n.mouth {\n    position: absolute;\n    width: 150px;\n    height: 150px;\n    left: 50%;\n    margin-left: -75px;\n    top: 170px;\n}\n\n.mouth .up {\n    position: relative;\n   \n    top: -20px;\n    z-index: 1;\n}\n\n.mouth .up .lip {\n    border: 2px solid black;\n    height: 30px;\n    width: 100px;\n    border-top-color: transparent;\n    border-right-color: transparent;\n    border-left-color: transparent;\n    position: relative;\n    left: 50%;\n    margin-left: -50px;\n    background: #ffe600;\n}\n\n.mouth .up .lip.left {\n    border-radius: 0 0 0 50px;\n    transform: rotate(-15deg) translateX(-53px);\n}\n\n.mouth .up .lip.left::before {\n\n    content: \"\";\n    display: block;\n    height: 30px;\n    width: 5px;\n    right: -3px;\n    background: #ffe600;\n    bottom: 0;\n    position: absolute;\n}\n\n.mouth .up .lip.right {\n    border-radius: 0 0 50px 0;\n   \n    top: -29px;\n    transform: rotate(15deg) translateX(53px);\n}\n\n.mouth .up .lip.right::before {\n\n    content: \"\";\n    display: block;\n    height: 30px;\n    width: 5px;\n    left: -3px;\n    background: #ffe600;\n    bottom: 0;\n    position: absolute;\n}\n\n.mouth .down {\n    /* border: 1px solid green; */\n    height: 200px;\n    width: 100%;\n    position: absolute;\n    top: 10px;\n    overflow: hidden;\n\n}\n\n.mouth .down .yuan1 {\n    border: 1px solid red;\n    width: 150px;\n    height: 1000px;\n    position: absolute;\n    bottom: 50px;\n    border-radius: 75PX/300PX;\n    background: #9b000a;\n    overflow: hidden;\n}\n.mouth .down .yuan1 .yuan2 {\n    content: \"\";\n  \n    width: 200px;\n    height: 300px;\n    position: absolute;\n    bottom: -190px;\n    margin-left: -100px;\n    left: 50%;\n    background: #ff485f;\n    border-radius:100px;\n}\n.face{\n     border: 3px solid red;\n     width: 88px;\n     height: 88px;\n     position: absolute;\n     left: 50%;\n     margin-left: -44px; \n     top: 230px;\n     z-index: 3; \n     border-radius: 50%;  \n     background: #ff0000;\n}\n.face.left{\n    transform: translateX(-170px);\n}\n.face.right{\n    transform: translateX(170px);\n}\n.face img{\n    height: 100px;\n    width: 100px;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n   \n}\n\n.face.left img{\n    transform: rotatey(180deg);\n    left:-70%;\n}\n</style>\n";
+var _default = string;
+exports.default = _default;
+},{}],"test.js":[function(require,module,exports) {
+"use strict";
+
+var _css = _interopRequireDefault(require("./css"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var n = 1;
+var time = 10;
+demo.innerText = _css.default.substr(0, n);
+demo2.innerHTML = _css.default.substr(0, n);
+
+var draw = function draw() {
+  n += 1;
+
+  if (n > _css.default.length) {
+    window.clearInterval(id);
+    return;
+  }
+
+  demo.innerText = _css.default.substr(0, n);
+  demo2.innerHTML = _css.default.substr(0, n);
+  demo.scrollTop = scrollHeight;
+};
+
+var play = function play() {
+  return setInterval(draw, time);
+};
+
+var pause = function pause() {
+  window.clearInterval(id);
+};
+
+var id = play();
+
+btnPause.onclick = function () {
+  pause();
+};
+
+btnPlay.onclick = function () {
+  id = play();
+};
+
+btnSlow.onclick = function () {
+  pause();
+  time = 300;
+  id = play();
+};
+
+btnNormal.onclick = function () {
+  pause();
+  time = 10;
+  id = play();
+};
+
+btnFast.onclick = function () {
+  pause();
+  time = 0;
+  id = play();
+};
+},{"./css":"css.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -147,7 +215,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2973" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3912" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -323,5 +391,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","main.js"], null)
-//# sourceMappingURL=/main.1f19ae8e.js.map
+},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","test.js"], null)
+//# sourceMappingURL=/test.e98b79dd.js.map

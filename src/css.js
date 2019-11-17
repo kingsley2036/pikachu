@@ -1,23 +1,14 @@
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
+const string = `
+<style>
 
-*::after,
-*::before {
-    box-sizing: border-box;
-}
-
-body {
-    background: #ffe600;
-    height: 100vh;
+#html{
+ background: #ffe600;
+ 
 }
 
 .pikachu {
     position: relative;
-
-
+      
 }
 
 .nose {
@@ -98,10 +89,9 @@ transform-origin: center bottom;
 }
 
 .mouth {
+    position: absolute;
     width: 150px;
     height: 150px;
-    /* border: 1px solid red;  */
-    position: relative;
     left: 50%;
     margin-left: -75px;
     top: 170px;
@@ -109,7 +99,7 @@ transform-origin: center bottom;
 
 .mouth .up {
     position: relative;
-    /* border: 1px solid red; */
+   
     top: -20px;
     z-index: 1;
 }
@@ -226,5 +216,6 @@ transform-origin: center bottom;
     transform: rotatey(180deg);
     left:-70%;
 }
-
-/*# sourceMappingURL=/style.e308ff8e.css.map */
+</style>
+`;
+export default string
