@@ -134,59 +134,68 @@ var _css = _interopRequireDefault(require("./css"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var n = 1;
-var time = 10;
-demo.innerText = _css.default.substr(0, n);
-demo2.innerHTML = _css.default.substr(0, n);
+var player = {
+  n: 1,
+  time: 10,
+  id: undefined,
+  demo: document.querySelector('#demo'),
+  demo2: document.querySelector('#demo2'),
+  init: function init() {
+    player.demo.innerText = _css.default.substr(0, player.n);
+    player.demo2.innerHTML = _css.default.substr(0, player.n);
+    player.play();
+    player.bindEvents();
+  },
+  events: {
+    '#btnPause': 'pause',
+    '#btnPlay': 'play',
+    '#btnSlow': 'slow',
+    '#btnNormal': 'normal',
+    '#btnFast': 'fast'
+  },
+  bindEvents: function bindEvents() {
+    for (var key in player.events) {
+      if (player.events.hasOwnProperty(key)) {
+        var value = player.events[key];
+        document.querySelector(key).onclick = player[value];
+      }
+    }
+  },
+  draw: function draw() {
+    player.n += 1;
 
-var draw = function draw() {
-  n += 1;
+    if (player.n > _css.default.length) {
+      window.clearInterval(player.id);
+      return;
+    }
 
-  if (n > _css.default.length) {
-    window.clearInterval(id);
-    return;
+    player.demo.innerText = _css.default.substr(0, player.n);
+    player.demo2.innerHTML = _css.default.substr(0, player.n);
+    player.demo.scrollTop = player.demo.scrollHeight;
+  },
+  play: function play() {
+    player.id = setInterval(player.draw, player.time);
+  },
+  pause: function pause() {
+    window.clearInterval(player.id);
+  },
+  slow: function slow() {
+    player.pause();
+    player.time = 300;
+    player.play();
+  },
+  normal: function normal() {
+    player.pause();
+    player.time = 10;
+    player.play();
+  },
+  fast: function fast() {
+    player.pause();
+    player.time = 0;
+    player.play();
   }
-
-  demo.innerText = _css.default.substr(0, n);
-  demo2.innerHTML = _css.default.substr(0, n);
-  demo.scrollTop = scrollHeight;
 };
-
-var play = function play() {
-  return setInterval(draw, time);
-};
-
-var pause = function pause() {
-  window.clearInterval(id);
-};
-
-var id = play();
-
-btnPause.onclick = function () {
-  pause();
-};
-
-btnPlay.onclick = function () {
-  id = play();
-};
-
-btnSlow.onclick = function () {
-  pause();
-  time = 300;
-  id = play();
-};
-
-btnNormal.onclick = function () {
-  pause();
-  time = 10;
-  id = play();
-};
-
-btnFast.onclick = function () {
-  pause();
-  time = 0;
-  id = play();
-};
+player.init();
 },{"./css":"css.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -215,7 +224,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3912" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11843" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
